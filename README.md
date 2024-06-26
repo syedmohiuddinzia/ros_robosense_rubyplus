@@ -47,12 +47,12 @@ To learn more about the RoboSense LiDAR Ruby Plus, please visit the [official do
 Install Ubuntu 18.04 LTS on your laptop if not already installed, You can find the installation guide [here](https://ubuntu.com/tutorials/install-ubuntu-desktop-1804#1-overview).
 Then, follow the instructions to install ROS Melodic. You can find the installation guide [here](http://wiki.ros.org/melodic/Installation/Ubuntu).
 3. **Install RSView V4.3.11:**
-Install the RSView V4.3.11 on your Ubuntu 18.04 Operating System from [RoboSense Ruby Plus - Download Link](https://www.robosense.ai/en/resources-89). This app will be used to configure and monitor your Reach RS2 GNSS receiver.
-4. **Assemble Reach RS2 and Ensure Battery is Charged:**
+Install the RSView V4.3.11 on your Ubuntu 18.04 Operating System from [RoboSense Ruby Plus - Download Link](https://www.robosense.ai/en/resources-89). This app will be used to configure and monitor your Reach RS2 GNSS receiver. I have also uploaded the ubuntu 18.04 and windows 10-11 RS View on my [Google Drive](https://drive.google.com/drive/folders/1KrJ3JA4d_RNE5xUVY1MWcMSFLXd5MXkr?usp=sharing).
+5. **Assemble Reach RS2 and Ensure Battery is Charged:**
 Assemble your Emlid Reach RS2 GNSS receiver according to the manufacturer's instructions. Make sure the battery is fully charged before proceeding with setup.
-5. **Setup for TCP Server Position Streaming:**
+6. **Setup for TCP Server Position Streaming:**
 Configure the Reach RS2 for TCP server position streaming. Note down the IP address and port number that will be used for streaming the GNSS data.
-6. **Find IP Address and Verify Port Using `ifconfig` and `nmap`:**
+7. **Find IP Address and Verify Port Using `ifconfig` and `nmap`:**
    - **Find IP Address using `ifconfig`:**
      Open a terminal on your Ubuntu laptop and type the following command to find your IP address:
 
@@ -101,13 +101,13 @@ Configure the Reach RS2 for TCP server position streaming. Note down the IP addr
      - **Interpretation:**
        - Ensure that the device `Reach-Rover.mshome.net` (IP: `192.168.137.231`) is detected.
        - Verify that port `9001/tcp` (tor-orport) is listed as open, confirming that the specified port is accessible on the device.
-7. **Check Data Streaming Before Running ROS:**
+8. **Check Data Streaming Before Running ROS:**
 Before starting ROS, verify that data is being streamed correctly from the Reach RS2. Open a terminal and use the `telnet` command to connect to the specified IP address and port. Enter:
      ```bash
      telnet 192.168.137.231 9001
      ```
      Replace `192.168.137.231` and `9001` with the actual IP address and port number configured for your Reach RS2. If successful, you should see streaming data indicating that the Reach RS2 GNSS receiver is transmitting position information over the TCP connection.
-8. **Clone and Catkin_make ROS Package:**
+9. **Clone and Catkin_make ROS Package:**
 Clone the ROS package for the Reach RS2 ROS driver from the GitHub repository [here](https://github.com/enwaytech/reach_rs_ros_driver/tree/master).
 Navigate to your Catkin workspace and build the package using the following commands:
      ```bash
@@ -117,17 +117,17 @@ Navigate to your Catkin workspace and build the package using the following comm
      catkin_make
      source devel/setup.bash
      ```
-9. **Run ROS Core:**
+10. **Run ROS Core:**
 Start the ROS core by running the following command in a terminal:
      ```bash
      roscore
      ```
-10. **Run Reach RS2 ROS Driver Node:**
+11. **Run Reach RS2 ROS Driver Node:**
 Launch the Reach RS2 ROS driver node with specific parameters for host/IP and port using the following command:
      ```bash
      rosrun reach_rs_driver reach_rs_driver_node _reach_rs_host_or_ip:=192.168.137.231 _reach_rs_port:=9001
      ```
-11. **Ensure Reach RS2 is connected on ROS**
+12. **Ensure Reach RS2 is connected on ROS**
 If everything is working fine, you will see
    ```
    [INFO] [1719069234.009935]: Connecting to 192.168.137.231:9001...
