@@ -1,4 +1,4 @@
-# ros_robosense_rubyplus
+# Robosense Ruby Plus setup on Robot OS
 this repository contains the installation procedure of robosense ruby plus for robot os. </br>
 For a better understanding of the RoboSense Ruby Plus RS ROS driver, please refer to the [Robosense Lidar - rsLidar SDK - Documentation](https://github.com/RoboSense-LiDAR/rslidar_sdk).
 
@@ -42,7 +42,7 @@ To learn more about the RoboSense LiDAR Ruby Plus, please visit the [official do
 | Header                     | Frame header in protocol packet.                                                               |
 | Tail                       | Frame tail in protocol packet.                                                                 |
 
-## Setup
+## Initial Setup, of Operating System and RS Lidar
 1. **Install Ubuntu 18.04 and ROS Melodic on Laptop:**
 Install Ubuntu 18.04 LTS on your laptop if not already installed, You can find the installation guide [here](https://ubuntu.com/tutorials/install-ubuntu-desktop-1804#1-overview).
 Then, follow the instructions to install ROS Melodic. You can find the installation guide [here](http://wiki.ros.org/melodic/Installation/Ubuntu).
@@ -50,7 +50,7 @@ Then, follow the instructions to install ROS Melodic. You can find the installat
 Install the RSView V4.3.11 on your Ubuntu 18.04 Operating System from [RoboSense Ruby Plus - Download Link](https://www.robosense.ai/en/resources-89). This app will be used to configure and monitor your Reach RS2 GNSS receiver. I have also uploaded the ubuntu 18.04 and windows 10-11 RS View on my [Google Drive](https://drive.google.com/drive/folders/1KrJ3JA4d_RNE5xUVY1MWcMSFLXd5MXkr?usp=sharing).
 3. **Network Configuration for RS Lidar Ruby Plus:**
 Connect the RS-Lidar to PC over Ethernet cable and power supply. The sensor has set the default IP address to computer at factory, therefore configure the **default IP address** of the computer to ```192.168.1.102```, **sub-net mask** to ```255.255.255.0```. Besides, users should make sure that the ***RSView doesn’t be blocked by any firewall or third party security software***.
-5. **Startup RSView:**
+4. **Startup RSView:**
    - Go to download directory of **RSView**
    - Open terminal and write
    ```bash run_rsview.sh``` </br>
@@ -59,77 +59,24 @@ Connect the RS-Lidar to PC over Ethernet cable and power supply. The sensor has 
       <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/2.png" alt="rosrun" width="750"/>
    - Configure the callibration values, and then **click OK**.
    - Leave **Group IP:** ```0.0.0.0``` and **Host IP:** ```0.0.0.0```, Configure the **MSOP Port:** ```6699``` and **DIFOP Port:** ```7788```. And then **click OK**.
-     
-6. 
-7. **Assemble Reach RS2 and Ensure Battery is Charged:**
-Assemble your Emlid Reach RS2 GNSS receiver according to the manufacturer's instructions. Make sure the battery is fully charged before proceeding with setup.
-8. **Setup for TCP Server Position Streaming:**
-Configure the Reach RS2 for TCP server position streaming. Note down the IP address and port number that will be used for streaming the GNSS data.
-9. **Find IP Address and Verify Port Using `ifconfig` and `nmap`:**
-   - **Find IP Address using `ifconfig`:**
-     Open a terminal on your Ubuntu laptop and type the following command to find your IP address:
-
-     ```bash
-     ifconfig
-     ```
-     Look for the `inet` section under your network interface (e.g., `eth0`, `wlan0`). Note down the IP address listed (e.g., `192.168.137.14`).
-     Example output:
-     ```
-     flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.137.14  netmask 255.255.255.0  broadcast 192.168.137.255
-        inet6 fe80::2989:acf5:ffce:77ea  prefixlen 64  scopeid 0x20<link>
-        ether 30:24:32:43:3c:26  txqueuelen 1000  (Ethernet)
-        RX packets 176808  bytes 206428950 (206.4 MB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 90543  bytes 15862196 (15.8 MB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-     ```
-   - **Use `nmap` to Scan for Devices and Ports:**
-     Open a new terminal and use `nmap` to scan the local network (`192.168.137.0/24` subnet in this example) and verify the open port on devices:
-     ```bash
-     nmap 192.168.137.0/24
-     ```
-     Replace `192.168.137.0/24` with your actual network subnet if different.
-     Example output:
-     ```
-     Starting Nmap 7.60 ( https://nmap.org ) at 2024-06-22 19:59 PKT
-     Nmap scan report for lenovo-P52s.mshome.net (192.168.137.14)
-     Host is up (0.00013s latency).
-     All 1000 scanned ports on lenovo-P52s.mshome.net (192.168.137.14) are closed
-     
-     Nmap scan report for Reach-Rover.mshome.net (192.168.137.231)
-     Host is up (0.0093s latency).
-     Not shown: 993 closed ports
-     PORT     STATE SERVICE
-     22/tcp   open  ssh
-     80/tcp   open  http
-     111/tcp  open  rpcbind
-     1000/tcp open  cadlock
-     2000/tcp open  cisco-sccp
-     2010/tcp open  search
-     9001/tcp open  tor-orport
-     
-     Nmap done: 256 IP addresses (2 hosts up) scanned in 5.27 seconds
-     ```
-     - **Interpretation:**
-       - Ensure that the device `Reach-Rover.mshome.net` (IP: `192.168.137.231`) is detected.
-       - Verify that port `9001/tcp` (tor-orport) is listed as open, confirming that the specified port is accessible on the device.
-10. **Check Data Streaming Before Running ROS:**
-Before starting ROS, verify that data is being streamed correctly from the Reach RS2. Open a terminal and use the `telnet` command to connect to the specified IP address and port. Enter:
-     ```bash
-     telnet 192.168.137.231 9001
-     ```
-     Replace `192.168.137.231` and `9001` with the actual IP address and port number configured for your Reach RS2. If successful, you should see streaming data indicating that the Reach RS2 GNSS receiver is transmitting position information over the TCP connection.
-11. **Clone and Catkin_make ROS Package:**
-Clone the ROS package for the Reach RS2 ROS driver from the GitHub repository [here](https://github.com/enwaytech/reach_rs_ros_driver/tree/master).
-Navigate to your Catkin workspace and build the package using the following commands:
+   - Now you will see the stream of RS Lidar Ruby Plus.
+  
+## Setting up RS Lidar on Robot OS
+5. **Clone and Catkin_make ROS Package:**
+   - Navigate to src directory catkin_ws directory and download or clone the directory from the GitHub repository [here](https://github.com/RoboSense-LiDAR/rslidar_sdk.git).
      ```bash
      cd ~/catkin_ws/src
-     git clone https://github.com/enwaytech/reach_rs_ros_driver.git
-     cd ~/catkin_ws
-     catkin_make
-     source devel/setup.bash
+     git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git
      ```
+   - Install dependency Yaml version >= v0.5.2 and libpcap version >= v1.7.4
+      ```
+      sudo apt-get update
+      sudo apt-get install -y libyaml-cpp-dev
+      sudo apt-get install -y  libpcap-dev
+      ```
+   - To compile using catkin_make method, open **CMakeLists.txt** and set the variable COMPILE_METHOD to CATKIN.
+  
+   - 
 12. **Run ROS Core:**
 Start the ROS core by running the following command in a terminal:
      ```bash
