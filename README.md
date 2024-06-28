@@ -51,7 +51,8 @@ Then, follow the instructions to install ROS Melodic. You can find the installat
 2. **Install RSView V4.3.11:**
 Install the RSView V4.3.11 on your Ubuntu 18.04 Operating System from [RoboSense Ruby Plus - Download Link](https://www.robosense.ai/en/resources-89). This app will be used to configure and monitor your Reach RS2 GNSS receiver. I have also uploaded the ubuntu 18.04 and windows 10-11 RS View on my [Google Drive](https://drive.google.com/drive/folders/1KrJ3JA4d_RNE5xUVY1MWcMSFLXd5MXkr?usp=sharing).
 3. **Network Configuration for RS Lidar Ruby Plus:**
-Connect the RS-Lidar to PC over Ethernet cable and power supply. The sensor has set the default IP address to computer at factory, therefore configure the **default IP address** of the computer to ```192.168.1.102```, **sub-net mask** to ```255.255.255.0```. Besides, users should make sure that the ***RSView doesn’t be blocked by any firewall or third party security software***.
+Connect the RS-Lidar to PC over Ethernet cable and power supply. The sensor has set the default IP address to computer at factory, therefore configure the **default IP address** of the computer to ```192.168.1.102```, **sub-net mask** to ```255.255.255.0```. Besides, users should make sure that the ***RSView doesn’t be blocked by any firewall or third party security software***. </br>
+   <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/ipv4.png" alt="rosrun" width="750"/>
 4. **Startup RSView:**
    - Go to download directory of **RSView**
    - Open terminal and write
