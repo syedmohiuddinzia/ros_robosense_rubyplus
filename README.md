@@ -54,14 +54,14 @@ Connect the RS-Lidar to PC over Ethernet cable and power supply. The sensor has 
    - Go to download directory of **RSView**
    - Open terminal and write
    ```bash run_rsview.sh``` </br>
-      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/1.png" alt="rosrun" width="500"/>
+      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/1.png" alt="rosrun" width="750"/>
    - When RSView opens, then click on the **File** -> **Open** -> **Sensor Stream** </br>
       <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/2.png" alt="rosrun" width="750"/>
-   - Configure the callibration values, and then **click OK**.
-      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/3.png" alt="rosrun" width="750"/>
-   - Leave **Group IP:** ```0.0.0.0``` and **Host IP:** ```0.0.0.0```, Configure the **MSOP Port:** ```6699``` and **DIFOP Port:** ```7788```. And then **click OK**.
-      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/4.png" alt="rosrun" width="750"/>
-   - Now you will see the stream of RS Lidar Ruby Plus.
+   - Configure the callibration values, and then **click OK**. </br>
+      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/3.png" alt="rosrun" width="500"/>
+   - Leave **Group IP:** ```0.0.0.0``` and **Host IP:** ```0.0.0.0```, Configure the **MSOP Port:** ```6699``` and **DIFOP Port:** ```7788```. And then **click OK**. </br>
+      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/4.png" alt="rosrun" width="350"/>
+   - Now you will see the stream of RS Lidar Ruby Plus. </br>
       <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/5.png" alt="rosrun" width="750"/>
             
 ## Setting up RS Lidar SDK on Robot OS
