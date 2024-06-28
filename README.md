@@ -68,6 +68,7 @@ Connect the RS-Lidar to PC over Ethernet cable and power supply. The sensor has 
       <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/5.png" alt="rosrun" width="750"/>
             
 ## Setting up RS Lidar SDK on Robot OS
+The RoboSense LiDAR SDK, available on GitHub at [rslidar_sdk](https://github.com/RoboSense-LiDAR/rslidar_sdk/tree/main), is an open-source software development kit designed for seamless integration and utilization of RoboSense LiDAR sensors. Supporting various models and compatible with major operating systems like Windows, Linux, and ROS, it provides comprehensive tools for collecting, processing, and analyzing LiDAR data. The SDK features detailed documentation, sample code, and active community support, making it a versatile and valuable resource for applications in autonomous vehicles, robotics, 3D mapping, object detection, and environmental monitoring. </br>
 1. **Clone and Compiling ROS Package for RS Lidar SDK:**
    - Navigate to src directory catkin_ws directory and download or clone the directory from the GitHub repository [here](https://github.com/RoboSense-LiDAR/rslidar_sdk.git).
      ```bash
