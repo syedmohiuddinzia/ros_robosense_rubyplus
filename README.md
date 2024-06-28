@@ -53,8 +53,12 @@ Connect the RS-Lidar to PC over Ethernet cable and power supply. The sensor has 
 5. **Startup RSView:**
    - Go to download directory of **RSView**
    - Open terminal and write
-   ```bash run_rsview.sh```
-   - When RSView opens, then click on the **File** -> **Open** -> **Sensor Stream**
+   ```bash run_rsview.sh``` </br>
+      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/1.png" alt="rosrun" width="500"/>
+   - When RSView opens, then click on the **File** -> **Open** -> **Sensor Stream** </br>
+      <img src="https://github.com/syedmohiuddinzia/ros_robosense_rubyplus/blob/main/images/2.png" alt="rosrun" width="750"/>
+   - Configure the callibration values, and then **click OK**.
+   - Leave **Group IP:** ```0.0.0.0``` and **Host IP:** ```0.0.0.0```, Configure the **MSOP Port:** ```6699``` and **DIFOP Port:** ```7788```. And then **click OK**.
      
 6. 
 7. **Assemble Reach RS2 and Ensure Battery is Charged:**
